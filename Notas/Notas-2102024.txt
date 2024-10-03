@@ -1,0 +1,20 @@
+Ejercico H)
+1. Notas: Proceso de trabajo o pensamiento:
+    Lo primero que hice fue mirar las tablas y analizar su estrcutra, por loque revise los nombres de las columnas de los csv y busque el significado de ellos.
+    Luego analice con cuales me convenia quedarme para hacer el ejercicio, en este de las tablas me quede con lo siguiente:
+        * Tabla Migraciones:  Country Origin Name,Country Origin Code,Migration by Gender Code, 2000 [2000]
+            + En el genero code me quede con el "TOT" que hace la sumatoria entre hombres y mujeres.
+        * Tabla Sedes: sede_id,pais_iso_3
+        * Tabla Secciones: sede_id,pais_iso_3
+    Posteriomente separe el ejercicio en 2 partes:
+        1. Conteo y promedio de sedes por pais
+         +Paso 1: Calcular el número de sedes y el promedio de secciones por país
+         +Paso 2: Unir la tabla migraciones con la tabla sedes_secciones agrupada por país
+        resultado: country, code_country,  sedes_count,  secciones_prom,
+        2. flujo migratorio por pais
+         +Paso 1: 
+    Al separ el ejercicio en 2 partes puedo manejar mejor ambos problemas de manera independiente.
+    Posteriomente, unifique ambos ejercios parea cumplir el ejemplo dado en el enunciado.
+
+
+

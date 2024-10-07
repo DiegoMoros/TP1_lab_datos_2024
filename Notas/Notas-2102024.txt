@@ -16,5 +16,3 @@ Ejercico H)
     Al separ el ejercicio en 2 partes puedo manejar mejor ambos problemas de manera independiente.
     Posteriomente, unifique ambos ejercios parea cumplir el ejemplo dado en el enunciado.
     +Se hizo una modularización para que sea mas escalabre y entendible el codigo.
-
-

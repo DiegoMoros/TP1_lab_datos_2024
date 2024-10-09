@@ -8,8 +8,8 @@ ejercicio1 = reporte_sedes_migracion(datos)
 
 # # Ejemplo de uso split_in_df
 # # Llamar a la función para separar la columna 'redes_sociales' por '//'
-# result = split_in_df(datos["sedes_completo"], 'redes_sociales', '//',drop_col=True)
-# print(result)
+result = split_in_df(datos["sedes_completo"], 'redes_sociales', '//',drop_col=True,save_csv=True)
+print(result)
 # print(datos["regiones"])
 ejercicio2a = cant_country_sedes(datos)
 print(ejercicio2a[1])

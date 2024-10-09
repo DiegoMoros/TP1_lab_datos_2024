@@ -1,0 +1,1 @@
+nota hice un cambio en el csv de regiones, le quite el acento a las columnas de regiones

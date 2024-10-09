@@ -10,8 +10,12 @@ datos = {
     "sedes_completo" : pd.read_csv(PATH_SEDES),
     "secciones" : pd.read_csv(PATH_SECCIONES),
     "regiones" : pd.read_csv(PATH_REGIONES)
-}
+} 
 
 def get_datos():
-    """Retorna la lista de datos"""
+    """Retorna la lista de datos transformados en dataframes"""
     return datos
+
+def get_keys():
+    """Retorna las keys de los dataframe en el diccionario"""
+    return datos.keys()

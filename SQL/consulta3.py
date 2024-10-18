@@ -1,4 +1,5 @@
 import pandasql as psql
+
 #Ejercicio 3
 """
     Para saber cuál es la vía de comunicación de las sedes en cada país, nos

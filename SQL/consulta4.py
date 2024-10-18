@@ -1,9 +1,35 @@
 import pandasql as psql
+
 """
     Confeccionar un reporte con la información de redes sociales, donde se
     indique para cada caso: el país, la sede, el tipo de red social y url utilizada.
     Ordenar de manera ascendente por nombre de país, sede, tipo de red y
-    finalmente por url. 
+    finalmente por url.
+    
+    datos: 
+        tabla sedes(modificada con la funcion split_in_df): columnas que tiene la tabla
+            Se seleccionan las siguientes columnas:
+            pais_castellano se renombra como País.
+            sede_id se renombra como Sede.
+            La red social se determina utilizando un bloque CASE que identifica la red social en función del contenido de las columnas de redes sociales (como %facebook.com% o %twitter.com%).
+            Se extrae la URL completa de la columna correspondiente a la red social (como redes_sociales_1, redes_sociales_2, etc.).
+            example:
+            Afganistán,AFG,Asia
+  
+        
+    Problemática
+        Datos incompletos: Se puede observar, muchas sedes tienen redes sociales vacías o 
+        nulas en algunas columnas. Esto podría generar un reporte con algunos huecos en la 
+        información o sesgar la interpretación sobre la cobertura real de cada sede en las redes.
+        
+        Normalización de nombres de redes sociales: Existen variaciones en las URLs de redes sociales, 
+        lo que puede generar problemas en la clasificación automática. Por ejemplo, la red "Twitter" 
+        tiene diferentes variantes de URLs (twitter.com y x.com), lo que necesita un tratamiento especial
+        en la consulta para agrupar estos casos bajo el mismo nombre.
+        
+        Redundancia en las redes: Algunas sedes tienen varias redes sociales para la misma plataforma 
+        (ej. múltiples cuentas de Facebook o Twitter), lo cual puede generar duplicados si no se filtran
+        adecuadamente los datos.
 """
 
 def reporte_redes_sociales(datos_redes):
@@ -125,4 +151,5 @@ def reporte_redes_sociales(datos_redes):
     '''
        
     redes_sociales = psql.sqldf(consulta_reporte, locals())
+
     return [consulta_reporte ,redes_sociales]

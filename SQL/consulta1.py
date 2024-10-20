@@ -1,5 +1,7 @@
 
 import pandasql as psql
+# from Helpers.datos import get_datos
+# datos = get_datos()
 
 #ejercicio 1.
 """
@@ -160,3 +162,4 @@ def reporte_sedes_migracion(datos):
     '''
     resultado = psql.sqldf(consulta_final, env=datos)
     return [consulta_final,resultado]
+# print(reporte_sedes_migracion(datos)[1])

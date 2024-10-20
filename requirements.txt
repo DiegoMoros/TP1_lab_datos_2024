@@ -1,3 +1,6 @@
 pandas
 inline_sql
 pandasql
+matplotlib.pyplot
+matplotlib 
+seaborn

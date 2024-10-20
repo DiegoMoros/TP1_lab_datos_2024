@@ -2,7 +2,7 @@ Pais,Codigo,Region
 Afganistán,AFG,Asia
 Albania,ALB,Europa
 Argelia,DZA,África
-Samoa Americana,ASM,Oceanía
+Samoa Americana,ASM,Oceania
 Andorra,AND,Europa
 Angola,AGO,África
 Anguila,AIA,América del Norte
@@ -10,7 +10,7 @@ Antigua y Barbuda,ATG,América del Norte
 Argentina,ARG,América del Sur
 Armenia,ARM,Asia
 Aruba,ABW,América del Norte
-Australia,AUS,Oceanía
+Australia,AUS,Oceania
 Austria,AUT,Europa
 Azerbaiyán,AZE,Asia
 Bahamas,BHS,América del Norte
@@ -44,7 +44,7 @@ Colombia,COL,América del Sur
 Comoras,COM,África
 República del Congo,COD,África
 Congo,COG,África
-Islas Cook,COK,Oceanía
+Islas Cook,COK,Oceania
 Costa Rica,CRI,América del Norte
 Côte d'Ivoire,CIV,África
 Croacia,HRV,Europa
@@ -64,11 +64,11 @@ Estonia,EST,Europa
 Etiopía,ETH,África
 Islas Feroe,FRO,Europa
 Islas Malvinas,FLK,América del Sur
-Fiji,FJI,Oceanía
+Fiji,FJI,Oceania
 Finlandia,FIN,Europa
 Francia,FRA,Europa
 Guayana Francesa,GUF,América del Sur
-Polinesia Francesa,PYF,Oceanía
+Polinesia Francesa,PYF,Oceania
 Gabón,GAB,África
 Gambia,GMB,África
 Georgia,GEO,Asia
@@ -125,13 +125,13 @@ Malasia,MYS,Asia
 Maldivas,MDV,Asia
 Malí,MLI,África
 Malta,MLT,Europa
-Islas Marshall,MHL,Oceanía
+Islas Marshall,MHL,Oceania
 Martinica,MTQ,América del Norte
 Mauritania,MRT,África
 Mauricio,MUS,África
 Islas de la Sociedad,MAT,Oceania
 México,MEX,América del Norte
-Micronesia,FSM,Oceanía
+Micronesia,FSM,Oceania
 Moldavia,MDA,Europa
 Mónaco,MCO,Europa
 Montenegro,MNG,Europa
@@ -229,10 +229,10 @@ Lebanon,LBN,Asia
 Sweden,SWE,Europa
 Swaziland,SWZ,África
 Zambia,ZMB,África
-Northern Mariana Islands,MNP,Oceanía
+Northern Mariana Islands,MNP,Oceania
 Malawi,MWI,África
 Mayotte,MYT,África
-Norfolk Island,NFK,Oceanía
+Norfolk Island,NFK,Oceania
 Serbia and Montenegro,SCG,Europa
 
 

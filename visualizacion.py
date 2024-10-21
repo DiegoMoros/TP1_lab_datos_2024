@@ -160,6 +160,3 @@ plt.show()
 
 
 
-
-
-"Hola"

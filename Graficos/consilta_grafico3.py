@@ -6,9 +6,7 @@ Created on Tue Oct 22 18:04:16 2024
 """
 import pandasql as psql
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt # Para graficar series multiples
-import seaborn as sns           # Para graficar histograma
 
 carpeta = "C:\\Users\\niqui\\Documents\\GitHub\\TP1_lab_datos_2024\\Datos\\"
 sedeCompleta =  pd.read_csv(carpeta+"sedes.csv")
@@ -73,13 +71,11 @@ consulta_flujo_y_sedes = '''
         ORDER BY f.Pais ASC
 '''
 flujo_y_sedes = psql.sqldf(consulta_flujo_y_sedes, locals())
+
+flujo_y_sedes['flujo_migratorio'] = flujo_y_sedes['flujo_migratorio'].apply(lambda x: '{:,.0f}'.format(x))
+
 flujo_y_sedes.to_csv(carpeta+"flujo_y_sedes.csv" , sep=';', index = False)
 
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-from scipy.cluster.hierarchy import linkage, dendrogram
-import numpy as np
 
 # Cargo el dataframe desde el archivo CSV
 df = pd.read_csv(carpeta+"flujo_y_sedes.csv", sep=';')

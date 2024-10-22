@@ -8,6 +8,14 @@ import pandasql as psql
     ejemplo, si en Chile utilizan 4 redes de facebook, 5 de instagram y 4 de
     twitter, el valor para Chile debería ser 3 (facebook, instagram y twitter).
 """
-def reporte_variacion_redes():
+def reporte_variacion_redes(datos):
     """"""
-    return None
+    ejercicio4 = datos
+    consulta_variacion_redes = """
+        SELECT DISTINCT País, COUNT(DISTINCT "Red Social") AS 'Cantidad de Redes'
+        FROM ejercicio4
+        GROUP BY País
+        ORDER BY País
+    """
+    variacion_redes_sociales = psql.sqldf(consulta_variacion_redes, locals())
+    return [reporte_variacion_redes ,variacion_redes_sociales]

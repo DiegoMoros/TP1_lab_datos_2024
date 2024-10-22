@@ -1,5 +1,7 @@
 
 import pandasql as psql
+# from Helpers.datos import get_datos
+# datos = get_datos()
 
 #ejercicio 1.
 """
@@ -165,4 +167,4 @@ def reporte_sedes_migracion(datos):
         ORDER BY ss.sedes_count DESC, country ASC
     '''
     resultado = psql.sqldf(consulta_final, env=datos)
-    return [consulta_final, resultado]
+    return [consulta_final,resultado]

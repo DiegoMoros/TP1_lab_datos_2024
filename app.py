@@ -16,3 +16,4 @@ ejercicio4 = reporte_redes_sociales(redes_sociales_df)
 
 # Llamamos la función de reporte de variación de redes
 ejercicio3 = reporte_variacion_redes(ejercicio4[1])
+

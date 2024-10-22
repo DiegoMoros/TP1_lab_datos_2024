@@ -1,0 +1,12 @@
+-Descargar git bash
+
+Clonar repo en carpeta cualquiera HTTPS 
+Luego en git Bash usamos cd, ls o pwd (comandos típicos)
+
+Cuando hacemos un cambio hacemos
+
+git add .
+git commit -m "Comentario"
+git push
+
+listo! s

@@ -1,8 +1,6 @@
 import pandasql as psql
-from Helpers.datos import get_datos
 from SQL.consulta1 import reporte_sedes_migracion
-
-datos = get_datos() 
+from Helpers.regularize import save_csv
 #ejercicio 2
 """ 
     Reportar agrupando por región geográfica: a) la cantidad de países en que
@@ -10,23 +8,9 @@ datos = get_datos()
     Argentina hacia esos países en el año 2000 (promedio sobre países donde
     Argentina tiene sedes). Ordenar de manera descendente por este último
     campo.
-    
-    datos: 
-        tabla regiones: columnas que tiene la tabla
-            Pais,Codigo,Region
-            example:
-            Afganistán,AFG,Asia
-        tabla sedes_basico: columnas que tiene la tabla
-            sede_id,sede_desc_castellano,sede_desc_ingles,pais_iso_2,pais_iso_3,pais_castellano,pais_ingles,ciudad_castellano,ciudad_ingles,estado,sede_tipo
-            example:
-            CANTO,"Consulado  en  Antofagasta","Consulate  in  ANTOFAGASTA",CL,CHL,"REPÚBLICA  DE  CHILE","REPUBLIC  OF  CHILE","Antofagasta","Antofagasta",Activo,"Consulado"
-
-    Probelmatica: 
-        la cantidad de países en que Argentina tiene al menos una sede y el promedio del flujo migratorio de Argentina hacia esos países en el año 2000 (promedio sobre países donde Argentina tiene sedes).
-        
-"""
+"""   
 def cant_country_sedes(datos):
-    """"""
+    """Reporte que indica la cantidad de países en donde Argentina tiene al menos una sede"""
     consulta_cantidad_de_sedes = '''
         SELECT r.Region AS Región_geográfica, COUNT(DISTINCT s.pais_iso_3) AS PaísesConSedes
         FROM regiones AS r
@@ -37,39 +21,27 @@ def cant_country_sedes(datos):
     cantidad_sedes = psql.sqldf(consulta_cantidad_de_sedes, env=datos)
     return [consulta_cantidad_de_sedes,cantidad_sedes]
 
-#print(cant_country_sedes(datos)[1])
-
-
-#%%    
 def flujo_migratorio_por_region(datos):
+    """Reporte sobre el promedio del flujo migratorio de Argentina hacia esos países en el año 2000"""
     consulta_reporte_flujo_migratorio = reporte_sedes_migracion(datos)[0]
-
-    consulta_flujo_migratorio2= f'''
     
-    SELECT c.Region AS region_geografica,
-           AVG(fmn.flujo_migratorio_neto) AS promedio_flujo_neto_arg_2000
-    FROM ({consulta_reporte_flujo_migratorio}) AS fmn
-    LEFT JOIN regiones c 
-        ON fmn.country = c.Codigo
-    WHERE fmn.country IS NOT NULL
-    GROUP BY c.Region
-    ORDER BY promedio_flujo_neto_arg_2000 DESC
-     '''
-
+    consulta_flujo_migratorio2= f'''
+        SELECT c.Region AS region_geografica,
+            AVG(fmn.flujo_migratorio_neto) AS promedio_flujo_neto_arg_2000
+        FROM ({consulta_reporte_flujo_migratorio}) AS fmn
+        LEFT JOIN regiones c 
+            ON fmn.country = c.Codigo
+        WHERE fmn.country IS NOT NULL
+        GROUP BY c.Region
+        ORDER BY promedio_flujo_neto_arg_2000 DESC
+        '''
     resultado = psql.sqldf(consulta_flujo_migratorio2, env=datos)
     return [consulta_flujo_migratorio2,resultado]
-#print(flujo_migratorio_por_region(datos)[1])
 
-
-
-
-#%%
-
-def  reporte_region_geografica(datos):
-    
+def  reporte_region_geografica(datos,save_df=False):
+    """Reporte final que unifica los puntos a y b del ejercicio"""
     consulta_flujo_migratorio_por_region = flujo_migratorio_por_region(datos)[0]
     consulta_cant_country_sedes = cant_country_sedes(datos)[0]
-      
 
     consulta_final = f'''
         SELECT ss.Región_geográfica AS Región_geográfica, 
@@ -84,5 +56,6 @@ def  reporte_region_geografica(datos):
         ORDER BY promedio_flujo_neto_arg_2000 DESC
     '''
     resultado = psql.sqldf(consulta_final, env=datos)
+    if save_df:
+        save_csv(resultado,"reporte_region_geografica")
     return [consulta_final,resultado]
-#print(reporte_region_geografica(datos)[1])

@@ -1,0 +1,39 @@
+Algunas ideas sobre los graficos:
+1. Distribución del Flujo Migratorio en América (América del Sur y América del Norte):
+América del Sur: El rango intercuartílico (IQR) es bastante compacto, lo que indica que la mayoría de los 
+países en esta región tienen flujos migratorios que no son extremadamente dispersos, pero aún hay un buen 
+número de outliers. Estos puntos atípicos sugieren que algunos países han experimentado movimientos migratorios
+muy por encima o por debajo del promedio de la región, lo que podría ser el caso de países con situaciones 
+políticas o económicas fluctuantes. El hecho de que haya puntos positivos y negativos también señala que 
+algunos países han recibido grandes cantidades de inmigrantes mientras otros han visto una significativa emigración.
+
+América del Norte: El rango es más ajustado que el de América del Sur, y hay menos outliers, lo que sugiere una 
+distribución más uniforme del flujo migratorio en esta región. Sin embargo, el número de puntos atípicos sugiere 
+que ciertos eventos (económicos o políticos) han causado fluctuaciones importantes en ciertos años, pero en 
+general, parece menos volátil que América del Sur.
+
+2. Distribución del Flujo Migratorio en Otras Regiones (África, Asia, Europa, Oceanía):
+Oceanía es la región que muestra la mayor dispersión, con flujos migratorios que varían ampliamente y algunos 
+valores extremadamente altos. Esto podría ser indicativo de que, aunque en general esta región no tiene un número 
+elevado de migraciones, eventos específicos han causado grandes flujos de personas hacia o desde países en Oceanía 
+en algunas décadas.
+Europa/Asia parece tener una distribución más estable y estrecha, lo cual se esperaría debido a la estabilidad 
+relativa en las políticas migratorias de muchos de sus países, aunque todavía muestra algunos outliers.
+África y Asia también muestran rangos ajustados, lo que podría indicar que en su mayoría estos continentes han 
+tenido flujos migratorios relativamente estables, con algunas excepciones que han llevado a grandes movimientos 
+poblacionales en ciertos años.
+3. Outliers:
+A pesar de eliminar algunos outliers con el umbral definido, todavía hay muchos puntos extremos en los 
+datos, particularmente en América del Sur y en Oceanía. Esto es esperable dado el impacto de eventos políticos, guerras 
+o crisis económicas en la migración, especialmente en regiones como América del Sur y ciertas partes de Europa y Asia.
+
+Conclusión y posibles mejoras:
+En el caso de América, podrías considerar investigar más en profundidad qué países están impulsando esos outliers en 
+América del Sur y qué eventos históricos o sociales podrían estar detrás.
+Para la región de Oceanía, es evidente que los flujos migratorios han sido muy variables en ciertos momentos, lo que 
+podría sugerir la importancia de eventos muy específicos.
+Si aún deseas eliminar más outliers para una mejor visualización, podrías ajustar el umbral del filtro de 
+outliers, reduciendo el número de desviaciones estándar permitido o aplicando una transformación a los datos para 
+comprimir los valores extremos.
+En resumen, los gráficos reflejan la realidad de que las migraciones no son uniformes, y factores políticos, económicos 
+y sociales en cada región han causado fluctuaciones importantes en las décadas analizadas.

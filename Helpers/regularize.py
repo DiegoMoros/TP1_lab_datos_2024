@@ -31,4 +31,21 @@ def split_in_df(df, n_column, delimiter,drop_col = False,save_csv = False,file_n
     else: 
         return pd.read_csv(file_name)
 
-        
+import pandas as pd
+
+def save_csv(df, nombre_archivo, index=False):
+    """
+    Guarda un DataFrame de pandas en un archivo CSV.
+        :param df: DataFrame de entrada
+    :param df: dataframe de pandas que se desea guardar
+    :param nombre_archivo: str utilizado como nombre del archivo
+    :param index: bool para agregar un indice al dataframe
+    :return: str con la el resultado del proceso de gurardado
+    """
+    file = f"Resultados\{nombre_archivo}.csv"
+    try:
+        df.to_csv(file, index=index)
+        return f"Archivo guardado exitosamente como: {nombre_archivo}"
+    except Exception as e:
+        return f"Error al guardar el archivo: {e}"
+

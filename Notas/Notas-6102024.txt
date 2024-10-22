@@ -1,1 +1,3 @@
 nota hice un cambio en el csv de regiones, le quite el acento a las columnas de regiones
+hicimos una función para hacer un split sobre las redes sociales de las sedes
+Nos paltenamos como objetivos analizar la rtendecnia d elso migrantes argerntinaos de las decadas del 60 al  2000

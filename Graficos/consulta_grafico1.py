@@ -4,17 +4,16 @@ Created on Tue Oct 22 18:04:19 2024
 
 @author: niqui
 """
-
-
 # Importamos bibliotecas
 import pandasql as psql
 import pandas as pd
 import matplotlib.pyplot as plt # Para graficar series multiples
-import os
 
-carpeta = r"Datos"
-archivo = os.path.join(carpeta, "sedes.csv")
-sedeCompleta = pd.read_csv(archivo)
+# Carpeta donde se encuentran los archivos a utilizar
+
+carpeta = "C:\\Users\\niqui\\Documents\\GitHub\\TP1_lab_datos_2024\\Datos\\"
+sedeCompleta =  pd.read_csv(carpeta+"sedes.csv")
+
 
 consultaSQL= '''
     SELECT DISTINCT region_geografica , COUNT(DISTINCT sede_id ) AS cantidad_de_sedes
@@ -25,7 +24,7 @@ consultaSQL= '''
 sedesXregion = psql.sqldf(consultaSQL, locals())
 sedesXregion.to_csv(carpeta+'SedesPorRegion.csv', sep=';', index = False)
 
-#GRAFICO DE BARRAS (BAR PLOT)
+#GRAFICO DE BARRAS 
 
 sedesPorRegion = pd.read_csv(carpeta + "SedesPorRegion.csv", sep=';')
 

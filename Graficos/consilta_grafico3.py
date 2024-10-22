@@ -4,17 +4,16 @@ Created on Tue Oct 22 18:04:16 2024
 
 @author: niqui
 """
-# Importamos bibliotecas
 import pandasql as psql
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt # Para graficar series multiples
 import seaborn as sns           # Para graficar histograma
-import os
 
-carpeta = r"Datos"
-archivo = os.path.join(carpeta, "migraciones.csv")
-migracion = pd.read_csv(archivo)
+carpeta = "C:\\Users\\niqui\\Documents\\GitHub\\TP1_lab_datos_2024\\Datos\\"
+sedeCompleta =  pd.read_csv(carpeta+"sedes.csv")
+migracion = pd.read_csv(carpeta + "migraciones.csv")
+
 
 '''Primero creo una tabla que contenga la cantidad de sedes por pais, despues hago una tabla 
 que me muestre la cantidad de emigrantes de todos los paises hacia Argentina y otra con la 

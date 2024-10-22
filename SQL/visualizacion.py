@@ -132,15 +132,15 @@ df = pd.read_csv(carpeta+"flujo_y_sedes.csv", sep=';')
 
 
 # Filtramos los datos para que solo incluyan puntos dentro de los límites deseados en el eje X
-df_filtered = df[(df['flujo_migratorio'] > -1000) & (df['flujo_migratorio'] < 1000)]
+df_filtered = df[(df['flujo_migratorio'] > -1000) & (df['flujo_migratorio'] < 1010)]
 
 # Añadimos jitter para separar puntos superpuestos
-jitter = np.random.normal(0, 0.2, size=len(df_filtered))
+#jitter = np.random.normal(0, 0.2, size=len(df_filtered))
 
 plt.figure(figsize=(10,6))
 
 # Creamos el scatter plot
-plt.scatter(df_filtered['flujo_migratorio'], df_filtered['cantidad_sedes'] + jitter, color='b', s=50, alpha=0.7)
+plt.scatter(df_filtered['flujo_migratorio'], df_filtered['cantidad_sedes'], color='b', s=50, alpha=0.7)
 
 # Etiquetas del gráfico
 plt.title('Relación entre Flujo Migratorio y Cantidad de Sedes por País')
@@ -149,17 +149,15 @@ plt.ylabel('Cantidad de Sedes')
 
 # Añadir nombres de los países como etiquetas, pero solo para países filtrados
 for i, pais in enumerate(df_filtered['Pais']):
-    if abs(df_filtered['flujo_migratorio'].iloc[i]) > 1000 or df_filtered['cantidad_sedes'].iloc[i] > 1:  # Etiquetar solo países relevantes
-        plt.text(df_filtered['flujo_migratorio'].iloc[i], df_filtered['cantidad_sedes'].iloc[i] + jitter[i], pais, fontsize=9, ha='right')
+    if (df_filtered['flujo_migratorio'].iloc[i]) > 700 or (df_filtered['flujo_migratorio'].iloc[i]) < -200 or df_filtered['cantidad_sedes'].iloc[i] > 1:  # Etiquetar solo países relevantes
+        plt.text(df_filtered['flujo_migratorio'].iloc[i], df_filtered['cantidad_sedes'].iloc[i], pais, fontsize=9, ha='right')
 
 # Acotar el rango del eje X
-plt.xlim(-1000, 1000)
-plt.ylim(0,3)
+plt.xlim(-750, 1010)
+plt.ylim(0.5,2.5)
 
 plt.grid(True)
 plt.show()
-
-
 
 
 # Crear un gráfico de burbujas
@@ -177,8 +175,9 @@ plt.xlabel('Cantidad de Sedes', fontsize=12)
 plt.ylabel('Flujo Migratorio', fontsize=12)
 
 # Añadir etiquetas para cada país en los puntos
-for i, pais in enumerate(data['Pais']):
-    plt.text(df['cantidad_sedes'][i], df['flujo_migratorio'][i], pais, fontsize=9)
+for i, pais in enumerate(df['Pais']):
+    if (df['cantidad_sedes'].iloc[i]) > 2:
+        plt.text(df['cantidad_sedes'][i], df['flujo_migratorio'][i], pais, fontsize=9)
 
 plt.grid(True)
 plt.show()

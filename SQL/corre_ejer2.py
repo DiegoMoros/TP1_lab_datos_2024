@@ -24,7 +24,7 @@ consulta_cantidad_de_sedes = '''
     '''
 cantidad_sedes = psql.sqldf(consulta_cantidad_de_sedes)
 # Mostrar los resultados
-print(cantidad_sedes)
+#print(cantidad_sedes)
 
 #ejercicio 2
 """ 
@@ -45,7 +45,7 @@ consultaSQL = '''
         ORDER BY Pais
     '''
 cantidad_sedes_pais = psql.sqldf(consultaSQL)
-print(cantidad_sedes_pais)
+#print(cantidad_sedes_pais)
 #%%
 consulta_emigraciones = '''
         SELECT DISTINCT "Country Origin Code" AS pais_origen, "2000 [2000]" AS cantidad_emigrantes
@@ -89,7 +89,7 @@ consulta_flujo_con_sedes = '''
         ORDER BY f.Pais ASC
 '''
 flujo_con_sedes = psql.sqldf(consulta_flujo_con_sedes)
-print(flujo_con_sedes)
+#print(flujo_con_sedes)
 
 
 "Ahora agrupo el flujo migratorio por región"
@@ -104,7 +104,7 @@ consulta_flujo_migratorio2= f'''
         ORDER BY promedio_flujo_neto_arg_2000 DESC
         '''
 resultado = psql.sqldf(consulta_flujo_migratorio2)
-print(resultado)
+#print(resultado)
 
 consulta_reporte_final = '''
         SELECT DISTINCT tt.region_geografica AS Region_geografica, 
@@ -113,7 +113,7 @@ consulta_reporte_final = '''
         FROM cantidad_sedes AS tt 
         JOIN resultado AS ss 
         ON tt.region_geografica = ss.region_geografica
-        ORDER BY promedio_flujo_neto_arg_2000 ASC
+        ORDER BY promedio_flujo_neto_arg_2000 DESC
 '''
 reporte_final = psql.sqldf(consulta_reporte_final)
 print(reporte_final)

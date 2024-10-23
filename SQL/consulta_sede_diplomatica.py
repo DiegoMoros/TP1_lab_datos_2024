@@ -12,7 +12,7 @@ secciones = pd.read_csv(carpeta + "secciones.csv")
 regiones = pd.read_csv(carpeta + "codigo_region.csv")
 
 consultaUnion = '''
-    SELECT s.sede_id, s.sede_desc_castellano, s.pais_iso_3 AS ISO3, COALESCE(sec.repeticiones, 0) AS repeticiones
+    SELECT s.sede_id, s.sede_desc_castellano, s.pais_iso_3 AS ISO3, COALESCE(sec.repeticiones, 0) AS cantidad_de_secciones
     FROM sedes_completo AS s
     LEFT JOIN (
         SELECT DISTINCT m.sede_id, COUNT(*) AS repeticiones

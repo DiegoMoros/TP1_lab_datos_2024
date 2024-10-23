@@ -72,7 +72,6 @@ consulta_flujo_y_sedes = '''
 '''
 flujo_y_sedes = psql.sqldf(consulta_flujo_y_sedes, locals())
 
-flujo_y_sedes['flujo_migratorio'] = flujo_y_sedes['flujo_migratorio'].apply(lambda x: '{:,.0f}'.format(x))
 
 flujo_y_sedes.to_csv(carpeta+"flujo_y_sedes.csv" , sep=';', index = False)
 

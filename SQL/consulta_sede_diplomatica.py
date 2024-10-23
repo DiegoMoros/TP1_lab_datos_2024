@@ -1,16 +1,27 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 22 19:50:19 2024
+import pandas as pd
+import pandasql as psql
 
-@author: niqui
-"""
+carpeta = "C:/Users/mgo20/OneDrive/Desktop/Data/plab/TP1_lab_datos_2024/Datos/"
 
-carpeta = "C:\\Users\\niqui\\Documents\\GitHub\\TP1_lab_datos_2024\\Datos\\"
-sedeCompleta =  pd.read_csv(carpeta+"sedes.csv")
+# Cargar Datos Migraciones 
+migraciones = pd.read_csv(carpeta + "migraciones.csv")
+sedes_basico  = pd.read_csv(carpeta + "sedes_min.csv")
+sedes_completo = pd.read_csv(carpeta + "sedes.csv")
+secciones = pd.read_csv(carpeta + "secciones.csv")
+#fue necesario agregar una base de datos externa para poder relacionar la info dada en un principio de los paises con su región 
+regiones = pd.read_csv(carpeta + "codigo_region.csv")
 
-consultaSede = '''
-        SELECT DISTINCT sede_id AS Sede_id, 
-        pais_castellano AS "Nombre sede en español", 
-        pais_iso_3AS ISO3
-        FROM sedeCompleta
+consultaUnion = '''
+    SELECT s.sede_id, s.sede_desc_castellano, s.pais_iso_3 AS ISO3, COALESCE(sec.repeticiones, 0) AS repeticiones
+    FROM sedes_completo AS s
+    LEFT JOIN (
+        SELECT DISTINCT m.sede_id, COUNT(*) AS repeticiones
+        FROM secciones AS m
+        GROUP BY m.sede_id
+    ) AS sec
+    ON s.sede_id = sec.sede_id;
 '''
+
+union_result = psql.sqldf(consultaUnion)
+print(union_result)
+

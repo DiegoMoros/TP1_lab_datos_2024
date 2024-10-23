@@ -26,7 +26,7 @@ def sedes_secciones(datos,total = True):
         ON s.sede_id = sec.sede_id
         GROUP BY s.pais_iso_3
     '''
-    consulta_sedes_secciones =     consulta_sedes_secciones = '''
+    consulta_sedes_secciones = '''
         SELECT s.pais_iso_3, COUNT(DISTINCT s.sede_id) AS sedes_count, 
             AVG(COALESCE(sec.cantidad_secciones, 0)) AS secciones_prom
         FROM sedes_completo AS s

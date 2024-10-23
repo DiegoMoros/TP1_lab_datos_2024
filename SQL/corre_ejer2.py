@@ -16,7 +16,7 @@ regiones = pd.read_csv(carpeta + "codigo_region.csv")
 #esta consulta me da los paises donde el origen y destino es argentina, Así puedo calcular el flujo migratorio 
 # Consulta SQL
 consulta_cantidad_de_sedes = '''
-        SELECT r.Region AS region_geografica, COUNT(DISTINCT s.pais_iso_3) AS Paises_con_sedes
+        SELECT r.Region AS region_geografica, COUNT(s.pais_iso_3) AS Paises_con_sedes
         FROM regiones AS r
         JOIN sedes_basico AS s ON r.Codigo = s.pais_iso_3  -- Relacionamos las tablas correctamente
         GROUP BY r.Region
@@ -24,7 +24,7 @@ consulta_cantidad_de_sedes = '''
     '''
 cantidad_sedes = psql.sqldf(consulta_cantidad_de_sedes)
 # Mostrar los resultados
-#print(cantidad_sedes)
+print(cantidad_sedes)
 
 #ejercicio 2
 """ 

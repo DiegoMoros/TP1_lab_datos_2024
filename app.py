@@ -3,8 +3,8 @@ from Helpers.regularize import split_in_df
 from SQL.consulta1 import reporte_sedes_migracion
 from SQL.consulta2 import reporte_region_geografica
 from SQL.consulta3 import reporte_variacion_redes
-from SQL.consulta4 import reporte_redes_sociales
-from Graficos.consulta_grafico2 import migratory_flow_graph
+from SQL.consulta4 import reporte_redes_sociales, consultaFinal, consultaNombre
+#from Graficos.consulta_grafico2 import migratory_flow_graph
 
 ##Auxiliares
 datos = get_datos()
@@ -16,6 +16,8 @@ ejercicio1 = reporte_sedes_migracion(datos,save_df = True)
 ejercicio2 = reporte_region_geografica(datos,save_df = True)
 ejercicio4 = reporte_redes_sociales(redes_sociales_df,save_df = True)
 ejercicio3 = reporte_variacion_redes(ejercicio4[1],save_df = True)
+ejercicio4_1 = consultaFinal(datos, redes_sociales_df)
+ejercicio4_2 = consultaNombre(datos)
 
 ##Graficos
 # grafico2_americas = migratory_flow_graph(datos,decadas,isAmericas=True)

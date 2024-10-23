@@ -1,7 +1,6 @@
 import pandasql as psql
 from Helpers.regularize import save_csv
-from Helpers.datos import get_datos
-datos = get_datos()
+
 
 #ejercicio 4
 """
@@ -27,7 +26,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_1 AS URL
             
         FROM  redes_sociales_df
-        WHERE redes_sociales_1 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,
@@ -43,7 +41,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_2 AS URL
             
         FROM  redes_sociales_df
-        WHERE redes_sociales_2 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,
@@ -59,7 +56,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_3 AS URL
             
         FROM  redes_sociales_df
-        WHERE redes_sociales_3 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,
@@ -75,7 +71,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_4  AS URL
             
         FROM  redes_sociales_df
-        WHERE redes_sociales_4 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,  
@@ -91,7 +86,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_5  AS URL
              
         FROM  redes_sociales_df
-        WHERE redes_sociales_5 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,  
@@ -107,7 +101,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_6  AS URL
              
         FROM  redes_sociales_df
-        WHERE redes_sociales_6 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,  
@@ -123,7 +116,6 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_7  AS URL
             
         FROM  redes_sociales_df
-        WHERE redes_sociales_7 IS NOT NULL
         
         ORDER BY País ASC, Sede ASC, "Red Social" ASC, URL ASC;
     '''
@@ -135,7 +127,7 @@ def reporte_redes_sociales(datos_redes,save_df=False):
         save_csv(redes_sociales,"reporte_redes_sociales")
     return [consulta_reporte ,redes_sociales]
 
-def cansultaNombre(datos):
+def consultaNombre(datos):
     consulta_nombre = '''
             SELECT DISTINCT Pais, Codigo
             FROM regiones
@@ -143,19 +135,18 @@ def cansultaNombre(datos):
     resultado = psql.sqldf(consulta_nombre, env=datos)
     return [consulta_nombre,resultado]
 
-def consultaFinal(datos):
-    nombre = cansultaNombre(datos)[0]
-    consulta_final = '''
+def consultaFinal(datos, redes):
+    nombre = consultaNombre(datos)[0]
+    redes_sociales = reporte_redes_sociales(redes)[0]
+    consulta_final = f'''
             SELECT DISTINCT n.Pais, r.Sede
             FROM ({nombre}) AS n
-            INNER JOIN redes_sociales AS r
+            INNER JOIN ({redes_sociales}) AS r
             ON n.Codigo = r.País
             ORDER BY n.Pais ASC
     '''
     resultado = psql.sqldf(consulta_final, env=datos)
     return [consulta_final,resultado]
 
-    
-print(consultaFinal(datos)[1])
   
 

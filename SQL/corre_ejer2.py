@@ -1,8 +1,8 @@
 import pandas as pd
 import pandasql as psql
-
+from Helpers.regularize import save_csv
 # Importamos los datasets que vamos a utilizar en este programa
-carpeta = "C:/Users/mgo20/OneDrive/Desktop/Data/plab/TP1_lab_datos_2024/Datos/"
+carpeta = "Datos/"
 
 # Cargar Datos Migraciones 
 migraciones = pd.read_csv(carpeta + "migraciones.csv")
@@ -116,4 +116,9 @@ consulta_reporte_final = '''
         ORDER BY promedio_flujo_neto_arg_2000 DESC
 '''
 reporte_final = psql.sqldf(consulta_reporte_final)
-print(reporte_final)
+
+def reporte_unificado_flujo_sedes(save_df=False):
+        if save_df:
+                save_csv(reporte_final,"reporte_unificado_flujo_sedes")
+        return reporte_final
+# %%

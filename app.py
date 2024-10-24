@@ -15,6 +15,7 @@ decadas = [1960, 1970, 1980, 1990, 2000]
 redes_sociales_df = split_in_df(datos["sedes_completo"], 'redes_sociales', '// ', drop_col=True, save_csv=True)
 sedes_diplomaticas = consulta_sede_diplomatica(datos,save_df=True)
 proceso_migratorio = consulta_proceso_migratorio(datos,save_df=True)
+redes_y_sedes = consulta_redes(save_df=True)
 ##Consultas
 ejercicio1 = reporte_sedes_migracion(datos,save_df = True)
 ejercicio2 = reporte_region_geografica(save_df = True)

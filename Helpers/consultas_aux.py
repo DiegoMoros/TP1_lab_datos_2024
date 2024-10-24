@@ -37,3 +37,14 @@ def consulta_sede_diplomatica(datos,save_df=False):
         save_csv(union_result,"sede_diplomatica")
     return [consultaUnion, union_result]
 
+def consulta_redes(save_df = False):
+    redes = pd.read_csv("Resultados/reporte_redes_sociales.csv")
+
+    consultaSQL= '''
+            SELECT DISTINCT Sede,"Red Social",URL
+            FROM redes
+    '''
+    redesSociales = psql.sqldf(consultaSQL, locals())
+    if save_df:
+        save_csv(redesSociales,"redes_y_sedes")
+    return [consultaSQL,redesSociales]

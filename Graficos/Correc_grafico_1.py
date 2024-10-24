@@ -1,7 +1,7 @@
 import pandas as pd
 import pandasql as psql
 
-carpeta = "C:/Users/mgo20/OneDrive/Desktop/Data/plab/TP1_lab_datos_2024/Datos/"
+carpeta = "Datos/"
 
 # Cargar Datos Migraciones 
 migraciones = pd.read_csv(carpeta + "migraciones.csv")
@@ -23,28 +23,28 @@ consultaSQL= '''
     GROUP BY region_geografica
     ORDER BY cantidad_de_sedes ASC
 '''
-
 sedesXregion = psql.sqldf(consultaSQL, locals())
-sedesXregion.to_csv(carpeta+'SedesPorRegion.csv', sep=';', index = False)
+def plot_number_of_branches():
+    """"""
 
-#GRAFICO DE BARRAS 
+    sedesXregion.to_csv(carpeta+'SedesPorRegion.csv', sep=';', index = False)
 
-sedesPorRegion = pd.read_csv(carpeta + "SedesPorRegion.csv", sep=';')
+    #GRAFICO DE BARRAS 
 
-# Genera el grafico de barras de las ventas mensuales (mejorando la informacion mostrada)
-fig, ax = plt.subplots()
+    sedesPorRegion = pd.read_csv(carpeta + "SedesPorRegion.csv", sep=';')
 
-plt.rcParams['font.family'] = 'sans-serif'           
+    # Genera el grafico de barras de las ventas mensuales (mejorando la informacion mostrada)
+    fig, ax = plt.subplots()
 
-# Cambia `bar` por `barh` para barras horizontales
-ax.barh(y='region_geografica', width='cantidad_de_sedes', data=sedesPorRegion)
+    plt.rcParams['font.family'] = 'sans-serif'           
 
-ax.set_title('Cantidad de sedes por región geográfica')
-ax.set_xlabel('Cantidad de sedes', fontsize='medium')
-ax.set_ylabel('Región geográfica', fontsize='medium')
-ax.set_xticks([])
+    # Cambia `bar` por `barh` para barras horizontales
+    ax.barh(y='region_geografica', width='cantidad_de_sedes', data=sedesPorRegion)
 
-# Agrega las etiquetas a las barras
-ax.bar_label(ax.containers[0], fontsize=8)
+    ax.set_title('Cantidad de sedes por región geográfica')
+    ax.set_xlabel('Cantidad de sedes', fontsize='medium')
+    ax.set_ylabel('Región geográfica', fontsize='medium')
+    ax.set_xticks([])
 
-plt.show()
+    # Agrega las etiquetas a las barras
+    ax.bar_label(ax.containers[0], fontsize=8)

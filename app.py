@@ -8,6 +8,7 @@ Descripción:
     Ademas guardamos nuestros resultado en csv de las tablas en la carpeta de Resultados.
     Los datos que usamos como referencia se ecneuntran en la carpeta de Dato
     Manejamos el control de las consultas y procesos dentro de esta rchivo llamado app.py
+    En la parte de documentos tenemos el enunciado y el informe realziado.
 """
 from Helpers.datos import get_datos
 from Helpers.regularize import split_in_df

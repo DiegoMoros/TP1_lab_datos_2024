@@ -13,10 +13,10 @@ def reporte_variacion_redes(datos,save_df = False):
     """Reporte sobre la variedad de medios de comunicación usados"""
     ejercicio4 = datos
     consulta_variacion_redes = """
-        SELECT DISTINCT País, COUNT(DISTINCT "Red Social") AS 'Cantidad de Redes'
+        SELECT DISTINCT Pais, COUNT(DISTINCT "Red Social") AS 'Cantidad de Redes'
         FROM ejercicio4
-        GROUP BY País
-        ORDER BY País
+        GROUP BY Pais
+        ORDER BY Pais
     """
     variacion_redes_sociales = psql.sqldf(consulta_variacion_redes, locals())
     if save_df:

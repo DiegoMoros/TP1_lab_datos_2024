@@ -127,37 +127,19 @@ def reporte_redes_sociales(datos_redes, datos, save_df=False):
             redes_sociales_7  AS URL
             
         FROM  redes_sociales_df
-        
-        ORDER BY País ASC, Sede ASC, "Red Social" ASC, URL ASC;
-    '''
-       
-    redes_sociales = psql.sqldf(consulta_reporte, locals())
+        WHERE redes_sociales_7 IS NOT NULL
     
-    
+        ORDER BY País ASC, Sede ASC, "Red Social" ASC, URL ASC
+    ) AS r
+    INNER JOIN (
+        SELECT DISTINCT Pais, Codigo
+        FROM regiones
+    ) AS n
+    ON n.Codigo = r.País;
+'''
+    resultado = psql.sqldf(consulta_reporte, locals())
     if save_df:
-        save_csv(redes_sociales,"reporte_redes_sociales")
-    return [consulta_reporte ,redes_sociales]
-
-def consultaNombre(datos):
-    consulta_nombre = '''
-            SELECT DISTINCT Pais, Codigo
-            FROM regiones
-    '''
-    resultado = psql.sqldf(consulta_nombre, env=datos)
-    return [consulta_nombre,resultado]
-
-def consultaFinal(datos, redes):
-    nombre = consultaNombre(datos)[0]
-    redes_sociales = reporte_redes_sociales(redes)[0]
-    consulta_final = f'''
-            SELECT DISTINCT n.Pais, r.Sede
-            FROM ({nombre}) AS n
-            INNER JOIN ({redes_sociales}) AS r
-            ON n.Codigo = r.País
-            ORDER BY n.Pais ASC
-    '''
-    resultado = psql.sqldf(consulta_final, env=datos)
-    return [consulta_final,resultado]
-
+        save_csv(resultado,"reporte_redes_sociales")
+        return [consulta_reporte,resultado]
   
 

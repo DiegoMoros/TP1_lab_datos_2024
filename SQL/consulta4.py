@@ -9,25 +9,31 @@ from Helpers.regularize import save_csv
     Ordenar de manera ascendente por nombre de país, sede, tipo de red y
     finalmente por url. 
 """
-def reporte_redes_sociales(datos_redes,save_df=False):
+
+
+def reporte_redes_sociales(datos_redes, datos, save_df=False):
     """Reporte general sobre las influencia o participación de las redes sociales en la sedes"""
     redes_sociales_df = datos_redes
+    regiones = datos["regiones"]  # Acceder al DataFrame de regiones
+
     consulta_reporte ='''
+    SELECT DISTINCT n.Pais, r.Sede, r.'Red Social', r.URL
+    FROM (
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede, 
             CASE
-               WHEN redes_sociales_1 LIKE '%facebook.com%' THEN 'Facebook'
-               WHEN redes_sociales_1 LIKE '%instagram.com%' THEN 'Instagram'
-               WHEN redes_sociales_1 LIKE '%twitter.com%' THEN 'Twitter'
-               WHEN redes_sociales_1 LIKE '%linkedin.com%' THEN 'Linkedin'
-               WHEN redes_sociales_1 LIKE '%flickr.com%' THEN 'Flickr'
-               WHEN redes_sociales_1 LIKE '%youtube.com%' THEN 'Youtube'
-               WHEN redes_sociales_1 LIKE '%x.com%' THEN 'Twitter'
+                WHEN redes_sociales_1 LIKE '%facebook.com%' THEN 'Facebook'
+                WHEN redes_sociales_1 LIKE '%instagram.com%' THEN 'Instagram'
+                WHEN redes_sociales_1 LIKE '%twitter.com%' THEN 'Twitter'
+                WHEN redes_sociales_1 LIKE '%linkedin.com%' THEN 'Linkedin'
+                WHEN redes_sociales_1 LIKE '%flickr.com%' THEN 'Flickr'
+                WHEN redes_sociales_1 LIKE '%youtube.com%' THEN 'Youtube'
+                WHEN redes_sociales_1 LIKE '%x.com%' THEN 'Twitter'
             END AS 'Red Social', 
             redes_sociales_1 AS URL
-            
-        FROM  redes_sociales_df
+        FROM redes_sociales_df
+        WHERE redes_sociales_1 IS NOT NULL
         UNION
-        
+    
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,
             CASE
                WHEN redes_sociales_2 LIKE '%facebook.com%' THEN 'Facebook'
@@ -41,6 +47,7 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_2 AS URL
             
         FROM  redes_sociales_df
+        WHERE redes_sociales_2 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,
@@ -56,6 +63,7 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_3 AS URL
             
         FROM  redes_sociales_df
+        WHERE redes_sociales_3 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,
@@ -71,6 +79,7 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_4  AS URL
             
         FROM  redes_sociales_df
+        WHERE redes_sociales_4 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,  
@@ -86,6 +95,7 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_5  AS URL
              
         FROM  redes_sociales_df
+        WHERE redes_sociales_5 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,  
@@ -101,6 +111,7 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_6  AS URL
              
         FROM  redes_sociales_df
+        WHERE redes_sociales_6 IS NOT NULL
         UNION
         
         SELECT DISTINCT pais_iso_3 AS País, sede_id AS Sede,  
@@ -116,37 +127,17 @@ def reporte_redes_sociales(datos_redes,save_df=False):
             redes_sociales_7  AS URL
             
         FROM  redes_sociales_df
-        
-        ORDER BY País ASC, Sede ASC, "Red Social" ASC, URL ASC;
-    '''
-       
-    redes_sociales = psql.sqldf(consulta_reporte, locals())
+        WHERE redes_sociales_7 IS NOT NULL
     
-    
+        ORDER BY País ASC, Sede ASC, "Red Social" ASC, URL ASC
+    ) AS r
+    INNER JOIN (
+        SELECT DISTINCT Pais, Codigo
+        FROM regiones
+    ) AS n
+    ON n.Codigo = r.País;
+'''
+    resultado = psql.sqldf(consulta_reporte, locals())
     if save_df:
-        save_csv(redes_sociales,"reporte_redes_sociales")
-    return [consulta_reporte ,redes_sociales]
-
-def consultaNombre(datos):
-    consulta_nombre = '''
-            SELECT DISTINCT Pais, Codigo
-            FROM regiones
-    '''
-    resultado = psql.sqldf(consulta_nombre, env=datos)
-    return [consulta_nombre,resultado]
-
-def consultaFinal(datos, redes):
-    nombre = consultaNombre(datos)[0]
-    redes_sociales = reporte_redes_sociales(redes)[0]
-    consulta_final = f'''
-            SELECT DISTINCT n.Pais, r.Sede
-            FROM ({nombre}) AS n
-            INNER JOIN ({redes_sociales}) AS r
-            ON n.Codigo = r.País
-            ORDER BY n.Pais ASC
-    '''
-    resultado = psql.sqldf(consulta_final, env=datos)
-    return [consulta_final,resultado]
-
-  
-
+        save_csv(resultado,"reporte_redes_sociales")
+        return [consulta_reporte,resultado]

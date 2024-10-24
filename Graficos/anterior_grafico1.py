@@ -1,29 +1,19 @@
-import pandas as pd
-import pandasql as psql
-
-carpeta = "C:/Users/mgo20/OneDrive/Desktop/Data/plab/TP1_lab_datos_2024/Datos/"
-
-# Cargar Datos Migraciones 
-migraciones = pd.read_csv(carpeta + "migraciones.csv")
-sedes_basico  = pd.read_csv(carpeta + "sedes_min.csv")
-sedes_completo = pd.read_csv(carpeta + "sedes.csv")
-secciones = pd.read_csv(carpeta + "secciones.csv")
-#fue necesario agregar una base de datos externa para poder relacionar la info dada en un principio de los paises con su región 
-regiones = pd.read_csv(carpeta + "codigo_region.csv")
-
 import pandasql as psql
 import pandas as pd
 import matplotlib.pyplot as plt # Para graficar series multiples
 
+# Carpeta donde se encuentran los archivos a utilizar
+
+carpeta = "datos/"
+sedeCompleta =  pd.read_csv(carpeta+"sedes.csv")
+
 
 consultaSQL= '''
-    SELECT DISTINCT r.Region AS region_geografica , COUNT(s.pais_iso_3) AS cantidad_de_sedes
-    FROM regiones AS r
-    JOIN sedes_basico AS s ON r.Codigo = s.pais_iso_3 
+    SELECT DISTINCT region_geografica , COUNT(DISTINCT sede_id ) AS cantidad_de_sedes
+    FROM sedeCompleta
     GROUP BY region_geografica
     ORDER BY cantidad_de_sedes ASC
 '''
-
 sedesXregion = psql.sqldf(consultaSQL, locals())
 sedesXregion.to_csv(carpeta+'SedesPorRegion.csv', sep=';', index = False)
 

@@ -1,0 +1,165 @@
+sede_id,sede_desc_castellano,ISO3,cantidad_de_secciones
+CALEG,Consulado  General  en  Porto  Alegre,BRA,0
+CANTO,Consulado  en  Antofagasta,CHL,0
+CAREN,Consulado  General  en  Punta  Arenas,CHL,0
+CASUN,Consulado  General  en  Asunción,PRY,0
+CATLA,Consulado  General  en  Atlanta,USA,0
+CBARC,Consulado  General  y  Centro  de  Promoción  en  Barcelona,ESP,6
+CBEIJ,Sección  Consular  en  Beijing,CHN,0
+CBELO,Consulado  en  Belo  Horizonte,BRA,0
+CBONN,Consulado  en  Bonn,DEU,0
+CCADI,Consulado  en  Cádiz,ESP,0
+CCEST,Consulado  General  en  Ciudad  del  Este,PRY,0
+CCHIC,Consulado  General  en  Chicago,USA,2
+CCOCH,Consulado  en  Cochabamba,BOL,0
+CCOLO,Consulado  en  Colonia,URY,0
+CCONC,Consulado  en  Concepción,CHL,0
+CCURI,Consulado  en  Curitiba,BRA,0
+CENCA,Consulado  General  en  Encarnación,PRY,0
+CFBEN,Consulado  en  Fray  Bentos,URY,0
+CFDIG,Consulado  en  Foz  de  Iguazu,BRA,0
+CFLOR,Consulado  en  Florianopolis,BRA,0
+CFRAN,Consulado  General  y  Centro  de  Promoción  en  Francfort,DEU,4
+CGEST,Consulado  General  y  Centro  de  Promoción  en  Estambul,TUR,0
+CGMUM,Consulado  General  y  Centro  de  Promoción  en  Mumbai,IND,3
+CGPAZ,Consulado  General  en  La  Paz,BOL,0
+CGTEL,Consulado  General  en  Tel  Aviv,ISR,2
+CGUAN,Consulado  General  en  Guangzhou,CHN,0
+CGUAY,Consulado  en  Guayaquil,ECU,2
+CGVAN,Consulado  General  en  Vancouver,CAN,0
+CHAMB,Consulado  General  en  Hamburgo,DEU,0
+CHONG,Consulado  General  en  Hong  Kong,CHN,2
+CHOUS,Consulado  General  en  Houston,USA,0
+CJOHA,Consulado  General  en  Johannesburgo,ZAF,0
+CLANG,Consulado  General  y  Centro  de  Promoción  en  Los  Ángeles,USA,0
+CLIMA,Consulado  General  en  Lima,PER,0
+CLOND,Consulado  General  en  Londres,GRB,0
+CMADR,Consulado  General  en  Madrid,ESP,0
+CMALD,Consulado  en  Maldonado,URY,0
+CMALL,Consulado  en  Palma,ESP,0
+CMDEO,Consulado  General  en  Montevideo,URY,0
+CMEXI,Consulado  General  en  México,MEX,0
+CMIAM,Consulado  General  y  Centro  de  Promoción  en  Miami,USA,8
+CMILA,Consulado  General  y  Centro  de  Promoción  en  Milán,ITA,3
+CMREA,Consulado  General  en  Montreal,CAN,0
+CNYOR,Consulado  General  y  Centro  de  Promoción  en  Nueva  York,USA,9
+CPABL,Consulado  General  y  Centro  de  Promoción  en  San  Pablo,BRA,1
+CPAYS,Consulado  en  Paysandú,URY,0
+CPCAR,Consulado  en  Playa  del  Carmen,MEX,1
+CPMON,Consulado  en  Puerto  Montt,CHL,0
+CRECI,Consulado  en  Recife,BRA,5
+CRIOJ,Consulado  General  en  Rio  de  Janeiro,BRA,4
+CROMA,Consulado  General  en  Roma,ITA,0
+CSBAH,Consulado  en  San  Salvador  de  Bahía,BRA,0
+CSCRS,Consulado  General  y  Centro  de  Promoción  en  Santa  Cruz,BOL,4
+CSHAN,Consulado  General  y  Centro  de  Promoción  en  Shanghai,CHN,7
+CSIDN,Consulado  General  en  Sidney,AUS,3
+CSIGO,Consulado  General  en  Santiago,CHL,0
+CSLTO,Consulado  en  Salto,URY,0
+CTARI,Consulado  General  en  Tarija,BOL,0
+CTENE,Consulado  en  Tenerife,ESP,0
+CTORO,Consulado  General  en  Toronto,CAN,3
+CURUG,Consulado  en  Uruguayana,BRA,1
+CVALP,Consulado  General  en  Valparaíso,CHL,0
+CVIGO,Consulado  General  en  Vigo,ESP,3
+CVILL,Consulado  en  Villazon,BOL,0
+CYACU,Consulado  en  Yacuiba,BOL,0
+DIGAC,Argentinos  en  el  exterior,ARG,0
+EALEM,Embajada  en  Alemania,DEU,10
+EANGO,Embajada  en  Angola,AGO,6
+EARAB,Embajada  en  Arabia  Saudita,SAU,0
+EARGE,Embajada  en  Argelia,DZA,6
+EARME,Embajada  en  Armenia,ARM,3
+EASIR,Embajada  en  Siria,SYR,1
+EAUST,Embajada  en  Australia,AUS,5
+EAZER,Embajada  en  Azerbaiyán,AZE,5
+EBANG,Embajada  en  Bangladesh,BGD,0
+EBARB,Embajada  en  Barbados,BRB,7
+EBELG,Embajada  en  Bélgica,BEL,5
+EBOLV,Embajada  en  Bolivia,BOL,12
+EBRAS,Embajada  en  Brasil,BRA,7
+EBULG,Embajada  en  Bulgaria,BGR,0
+ECANA,Embajada  en  Canadá,CAN,4
+ECEUR,Embajada  ante  la  Unión  Europea,BEL,6
+ECHES,Embajada  en  República  Checa,CZE,5
+ECHIN,Embajada  en  China,CHN,8
+ECOLO,Embajada  en  Colombia,COL,7
+ECORE,Embajada  en  Corea  Del  Sur,KOR,5
+ECUBA,Embajada  en  Cuba,CUB,5
+EDINA,Embajada  en  Dinamarca,DNK,4
+EDOMI,Embajada  en  República  Dominicana,DOM,3
+EEARB,Embajada  en  Emiratos  Árabes  Unidos,ARE,3
+EECUA,Embajada  en  Ecuador,ECU,8
+EEEUU,Embajada  en  Estados  Unidos,USA,11
+EEGIP,Embajada  en  Egipto,EGY,6
+EEOEA,Misión  Permanente  ante  la  Organización  de  Estados  Americanos,USA,0
+EESPA,Embajada  en  España,ESP,7
+EETIO,Embajada  en  Etiopía,ETH,4
+EFILI,Embajada  en  Filipinas,PHL,4
+EFINL,Embajada  en  Finlandia,FIN,2
+EFRAN,Embajada  en  Francia,FRA,9
+EFRUS,Embajada  en  Rusia,RUS,13
+EGREC,Embajada  en  Grecia,GRC,4
+EGUAT,Embajada  en  Guatemala,GTM,3
+EGUYA,Embajada  en  Guyana,GUY,0
+EHAIT,Embajada  en  Haití,HTI,7
+EHILE,Embajada  en  Chile,CHL,14
+EHOND,Embajada  en  Honduras,HND,4
+EINDI,Embajada  en  India,IND,4
+EIRAN,Embajada  en  Irán,IRN,1
+EIRLA,Embajada  en  Irlanda,IRL,4
+EISIA,Embajada  en  Indonesia,IDN,5
+EISRA,Embajada  en  Israel,ISR,3
+EITAL,Embajada  en  Italia,ITA,10
+EJAMA,Embajada  en  Jamaica,JAM,3
+EJAPO,Embajada  en  Japón,JPN,6
+EKENY,Embajada  en  Kenia,KEN,6
+EKUWA,Embajada  en  Kuwait,KWT,5
+ELBIA,Embajada  en  Libia,LBY,2
+ELBNO,Embajada  en  Líbano,LBN,5
+ELUCI,Embajada  en  Santa  Lucía,LCA,0
+EMARR,Embajada  en  Marruecos,MAR,5
+EMEXI,Embajada  en  México,MEX,9
+EMFAO,Misión  Permanente  ante  la  Organización  de  las  Naciones  Unidas  para  la  Alimentación  y  la  Agricultura,ITA,0
+EMOZA,Embajada  en  Mozambique,MOZ,8
+EMSIA,Embajada  en  Malasia,MYS,3
+EMSUR,Representación  Permanente  para  MERCOSUR  y  ALADI,URY,0
+ENAUN,Representación  Permanente  ante  las  Naciones  Unidas,USA,0
+ENICA,Embajada  en  Nicaragua,NIC,1
+ENIGE,Embajada  en  Nigeria,NGA,6
+ENORU,Embajada  en  Noruega,NOR,3
+ENZEL,Embajada  en  Nueva  Zelandia,NZL,3
+EOIRS,Misión  Permanente  ante  los  Organismos  Internacionales  en  Ginebra,CHE,0
+EPAKI,Embajada  en  Pakistán,PAK,2
+EPARA,Embajada  en  Paraguay,PRY,0
+EPBAJ,Embajada  en  Holanda,NLD,4
+EPERU,Embajada  en  Perú,PER,7
+EPNMA,Embajada  en  Panamá,PAN,4
+EPOLO,Embajada  en  Polonia,POL,3
+EPORT,Embajada  en  Portugal,PRT,5
+EQATR,Embajada  en  Qatar,QAT,5
+ERICA,Embajada  en  Costa  Rica,CRI,2
+ERUMA,Embajada  en  Rumania,ROU,2
+ERUNI,Embajada  en  Reino  Unido,GRB,12
+ESAFR,Embajada  en  Sudáfrica,ZAF,4
+ESALV,Embajada  en  El  Salvador,SLV,5
+ESENE,Embajada  en  Senegal,SEN,0
+ESERB,Embajada  en  Serbia,SRB,4
+ESING,Embajada  en  Singapur,SGP,4
+ESSED,Representación  ante  la  Santa  Sede,VAT,6
+ESUEC,Embajada  en  Suecia,SWE,4
+ESUIZ,Embajada  en  Suiza,CHE,5
+ESURI,Embajada  en  Surinam,SUR,6
+ETAIL,Embajada  en  Tailandia,THA,6
+ETRIA,Embajada  en  Austria,AUT,11
+ETRIN,Embajada  en  Trinidad  y  Tobago,TTO,1
+ETUNE,Embajada  en  Túnez,TUN,7
+ETURQ,Embajada  en  Türkiye,TUR,4
+EUCRA,Embajada  en  Ucrania,UKR,4
+EUNES,"Delegación  Permanente  ante  la  Organización  de  las  Naciones  Unidas  para  la  Educación, la  Ciencia  y  la  Cultura",FRA,0
+EUNGR,Embajada  en  Hungría,HUN,5
+EURUG,Embajada  en  Uruguay,URY,4
+EVENE,Embajada  en  Venezuela,VEN,5
+EVIET,Embajada  en  Vietnam,VNM,4
+OCCAT,Oficina  Comercial  y  Cultural  Argentina  en  Taiwán,CHN,0
+REPAL,Oficina  de  Representación  en  el  Estado  de  Palestina,PSE,0

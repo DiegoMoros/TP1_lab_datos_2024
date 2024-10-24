@@ -1,8 +1,8 @@
-Región_geográfica,Países_Con_Sedes_Argentinas,Promedio_flujo_con_Argentina
-Europa/Asia,1,1675380.0
-América del Norte,16,552863.7567567568
-Oceania,2,146589.33333333334
-Europa,22,35221.73469387755
-África,12,-132877.24561403508
-América del Sur,12,-175909.33333333334
-Asia,24,-350997.9387755102
+Region_geografica,Paises_con_sedes,promedio_flujo_neto_arg_2000
+América del Norte,29,8716.625
+Oceania,3,5202.5
+Asia,32,1068.25
+África,13,158.0
+Europa/Asia,1,-2349.0
+Europa,37,-13171.09090909091
+América del Sur,46,-69693.25

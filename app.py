@@ -1,3 +1,14 @@
+"""
+Integrantes: Diego Moros, Nicole Britos, María Obregón
+Descripción:
+    El codigo se encuentra separado en 3 carpetas principales
+        ->SQL: Donde realziamos las cosnultas SQL
+        ->Helpers: Donde creamos algunas funciones auxiliares
+        ->Graficos: Donde generamos los graficos que respalndan nuestroa analsiis 
+    Ademas guardamos nuestros resultado en csv de las tablas en la carpeta de Resultados.
+    Los datos que usamos como referencia se ecneuntran en la carpeta de Dato
+    Manejamos el control de las consultas y procesos dentro de esta rchivo llamado app.py
+"""
 from Helpers.datos import get_datos
 from Helpers.regularize import split_in_df
 from Helpers.consultas_aux import *

@@ -79,7 +79,7 @@ def migration_flow_vs_number_of_branches():
         plt.scatter(df['cantidad_sedes'], df['flujo_migratorio'], s=150, alpha=0.5, c='b', edgecolors='w', linewidth=1)
 
         # Añadir etiquetas y título
-        plt.title('Relación entre Flujo Migratorio y Cantidad de Sedes por País (Tamaño = Cantidad de Sedes)', fontsize=14)
+        plt.title('Relación entre Flujo Migratorio y Cantidad de Sedes por País', fontsize=14)
         plt.xlabel('Cantidad de Sedes', fontsize=12)
         plt.ylabel('Flujo Migratorio', fontsize=12)
 

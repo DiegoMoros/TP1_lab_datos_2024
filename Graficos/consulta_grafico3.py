@@ -72,43 +72,11 @@ def migration_flow_vs_number_of_branches():
         # Cargo el dataframe desde el archivo CSV
         df = pd.read_csv(carpeta+"flujo_y_sedes.csv", sep=';')
 
-        # Filtramos los datos para que solo incluyan puntos dentro de los límites deseados en el eje X
-        df_filtered = df[(df['flujo_migratorio'] > -1000) & (df['flujo_migratorio'] < 1010)]
-
-        # Añadimos jitter para separar puntos superpuestos
-        #jitter = np.random.normal(0, 0.2, size=len(df_filtered))
-
-        plt.figure(figsize=(10,6))
-
-        # Creamos el scatter plot
-        plt.scatter(df_filtered['flujo_migratorio'], df_filtered['cantidad_sedes'], color='b', s=50, alpha=0.7)
-
-        # Etiquetas del gráfico
-        plt.title('Relación entre Flujo Migratorio y Cantidad de Sedes por País')
-        plt.xlabel('Flujo Migratorio (Inmigrantes - Emigrantes)')
-        plt.ylabel('Cantidad de Sedes')
-
-        # Añadir nombres de los países como etiquetas, pero solo para países filtrados
-        for i, pais in enumerate(df_filtered['Pais']):
-                if (df_filtered['flujo_migratorio'].iloc[i]) > 700 or (df_filtered['flujo_migratorio'].iloc[i]) < -200 or df_filtered['cantidad_sedes'].iloc[i] > 1:  # Etiquetar solo países relevantes
-                        plt.text(df_filtered['flujo_migratorio'].iloc[i], df_filtered['cantidad_sedes'].iloc[i], pais, fontsize=9, ha='right')
-
-        # Acotar el rango del eje X
-        plt.xlim(-750, 1010)
-        plt.ylim(0.5,2.5)
-
-        plt.grid(True)
-        plt.show()
-
-
         # Crear un gráfico de burbujas
         plt.figure(figsize=(10,6))
 
-        # El tamaño de las burbujas estará relacionado con la cantidad de sedes
-        bubble_size = df['cantidad_sedes'] * 100  # Multiplicamos para que las burbujas sean visibles
-
         # Crear el scatter plot con tamaño variable de las burbujas
-        plt.scatter(df['cantidad_sedes'], df['flujo_migratorio'], s=bubble_size, alpha=0.5, c='b', edgecolors='w', linewidth=1)
+        plt.scatter(df['cantidad_sedes'], df['flujo_migratorio'], s=150, alpha=0.5, c='b', edgecolors='w', linewidth=1)
 
         # Añadir etiquetas y título
         plt.title('Relación entre Flujo Migratorio y Cantidad de Sedes por País (Tamaño = Cantidad de Sedes)', fontsize=14)
@@ -118,7 +86,7 @@ def migration_flow_vs_number_of_branches():
         # Añadir etiquetas para cada país en los puntos
         for i, pais in enumerate(df['Pais']):
                 if (df['cantidad_sedes'].iloc[i]) > 2:
-                        plt.text(df['cantidad_sedes'][i], df['flujo_migratorio'][i], pais, fontsize=9)
+                        plt.text(df['cantidad_sedes'][i], df['flujo_migratorio'][i], pais, fontsize=14)
 
         plt.grid(True)
         plt.show()

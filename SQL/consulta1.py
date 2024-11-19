@@ -10,32 +10,36 @@ from Helpers.regularize import save_csv
     caso de empate, ordenar alfabéticamente por nombre de país. A modo de
     ejemplo, el resultado podría ser:
 """
-def sedes_secciones(datos,total = True):
+def sedes_secciones(datos, total=True):
     """Calcula la cantidad de sedes y el promedio de secciones por país."""
     consulta_sedes_secciones_TOTAL = '''
-        SELECT s.pais_iso_3, 
-               COUNT(DISTINCT s.sede_id) AS sedes_count, 
-               AVG(sec.cantidad_secciones) AS secciones_prom
+        SELECT 
+            s.pais_iso_3, 
+            COUNT(DISTINCT s.sede_id) AS sedes_count, 
+            ROUND(AVG(COALESCE(sec.cantidad_secciones, 0)), 1) AS secciones_prom
         FROM sedes_completo AS s
         LEFT JOIN (
-            SELECT sede_id, 
-                   COUNT(*) AS cantidad_secciones
+            SELECT 
+                sede_id, 
+                COUNT(*) AS cantidad_secciones
             FROM secciones
             GROUP BY sede_id
-        ) AS sec
-        ON s.sede_id = sec.sede_id
+        ) AS sec ON s.sede_id = sec.sede_id
         GROUP BY s.pais_iso_3
     '''
     consulta_sedes_secciones = '''
-        SELECT s.pais_iso_3, COUNT(DISTINCT s.sede_id) AS sedes_count, 
-            AVG(COALESCE(sec.cantidad_secciones, 0)) AS secciones_prom
+        SELECT 
+            s.pais_iso_3, 
+            COUNT(DISTINCT s.sede_id) AS sedes_count, 
+            ROUND(AVG(COALESCE(sec.cantidad_secciones, 0)), 1) AS secciones_prom
         FROM sedes_completo AS s
         LEFT JOIN (
-            SELECT sede_id, COUNT(sede_id) AS cantidad_secciones
+            SELECT 
+                sede_id, 
+                COUNT(*) AS cantidad_secciones
             FROM secciones
             GROUP BY sede_id
-        ) AS sec
-        ON s.sede_id = sec.sede_id
+        ) AS sec ON s.sede_id = sec.sede_id
         GROUP BY s.pais_iso_3
     '''
     if total: 
@@ -64,8 +68,9 @@ def sedes_migraciones(datos, total=True):
 
 def emigracion():
     consulta = '''
-    SELECT "Country Origin Code" AS code_country, 
-    SUM("2000 [2000]") AS emigracion
+    SELECT 
+        "Country Origin Code" AS code_country, 
+        SUM("2000 [2000]") AS emigracion
     FROM migraciones
     WHERE "Migration by Gender Code" = 'TOT'
     GROUP BY "Country Origin Code"
@@ -74,8 +79,9 @@ def emigracion():
 
 def inmigracion():
     consulta = '''
-    SELECT "Country Dest Code" AS code_country, 
-    SUM("2000 [2000]") AS inmigracion
+    SELECT 
+        "Country Dest Code" AS code_country, 
+        SUM("2000 [2000]") AS inmigracion
     FROM migraciones
     WHERE "Migration by Gender Code" = 'TOT'
     GROUP BY "Country Dest Code"
@@ -93,15 +99,18 @@ def flujo_migratorio(datos):
         )
         SELECT 
             COALESCE(f_inm.code_country, f_emi.code_country) AS code_country,
-            MAX(COALESCE(m."Country Origin Name", m."Country Dest Name", '')) AS country,
+            MAX(CASE 
+                WHEN f_inm.code_country IS NOT NULL THEN m."Country Dest Name" 
+                WHEN f_emi.code_country IS NOT NULL THEN m."Country Origin Name" 
+                ELSE '' 
+            END) AS country,
             COALESCE(f_inm.inmigracion, 0) - COALESCE(f_emi.emigracion, 0) AS flujo_migratorio_neto
         FROM flujo_inmigracion f_inm
         FULL OUTER JOIN flujo_emigracion f_emi 
             ON f_inm.code_country = f_emi.code_country
         LEFT JOIN migraciones m 
-            ON COALESCE(f_inm.code_country, f_emi.code_country) = m."Country Origin Code"
-            OR COALESCE(f_inm.code_country, f_emi.code_country) = m."Country Dest Code"
-        WHERE m."Migration by Gender Code" = 'TOT'
+            ON f_inm.code_country = m."Country Dest Code"
+            OR f_emi.code_country = m."Country Origin Code"
         GROUP BY COALESCE(f_inm.code_country, f_emi.code_country)
         ORDER BY flujo_migratorio_neto DESC
     '''

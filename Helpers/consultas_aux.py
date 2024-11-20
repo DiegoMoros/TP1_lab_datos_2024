@@ -6,14 +6,14 @@ def consulta_proceso_migratorio(datos,save_df = False):
     consultaUnion = '''
         SELECT 
         `Country Origin Code` AS ISO_pais_origen, 
-        `Migration by Gender Code` AS Gender_Code, 
         `Country Dest Code` AS ISO_pais_destino, 
         `1960 [1960]`, 
         `1970 [1970]`, 
         `1980 [1980]`, 
         `1990 [1990]`, 
         `2000 [2000]`
-        FROM migraciones;
+        FROM migraciones
+        WHERE `Migration by Gender Code` = TOT;
     '''
     union_resultado = psql.sqldf(consultaUnion,env=datos)
     if save_df:

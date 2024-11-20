@@ -13,7 +13,7 @@ def consulta_proceso_migratorio(datos,save_df = False):
         `1990 [1990]`, 
         `2000 [2000]`
         FROM migraciones
-        WHERE `Migration by Gender Code` = TOT;
+        WHERE `Migration by Gender Code` = "TOT";
     '''
     union_resultado = psql.sqldf(consultaUnion,env=datos)
     if save_df:

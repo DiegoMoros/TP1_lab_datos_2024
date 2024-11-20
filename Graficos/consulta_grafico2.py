@@ -101,6 +101,8 @@ def migratory_flow_graph(datos, decadas,isAmericas = False):
         plt.xlabel('Región Geográfica')
         plt.ylabel('Flujo Migratorio')
         plt.xticks(rotation=45)
+        plt.yticks(ticks=range(-2000000, 3000000, 1000000),
+                   labels=[f'{tick/1e6:.1f}M' for tick in range(-2000000, 3000000, 1000000)])
         plt.show()
     else:
         # Crear boxplot para otras regiones
@@ -110,5 +112,7 @@ def migratory_flow_graph(datos, decadas,isAmericas = False):
         plt.xlabel('Región Geográfica')
         plt.ylabel('Flujo Migratorio')
         plt.xticks(rotation=45)
+        plt.yticks(ticks=range(-3000000, 3000000, 1000000),
+                   labels=[f'{tick/1e6:.1f}M' for tick in range(-3000000, 3000000, 1000000)])
         plt.show()
 
